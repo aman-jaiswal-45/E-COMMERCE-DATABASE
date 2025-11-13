@@ -5,19 +5,18 @@ This repository contains a full-featured **E-Commerce** platform database schema
 The database models Users, Addresses, Categories, Suppliers, Products (with Variants & Images), Wishlists, Carts, Orders, Payments, Coupons, and Reviews.
 
 Included:
-- MySQL-compatible schema (`schema.sql`)
-- Extensive sample/dump data for India-based test data (`seed.sql`)
-- ER Diagram (visual) — `A_2D_entity-relationship_diagram_(ERD)_displays_an.png`
+- MySQL-compatible schema (`E-COMMERCE.sql`)
+- Extensive sample/dump data for testing (`Dummy_Data.sql`)
+- ER Diagram (visual) — `E_Commerce.png`
 - Useful queries & examples in `queries.md`
 
 ---
 
 ## Files in this package
-- `schema.sql` — DDL for creating the database (InnoDB, utf8mb4, constraints, indexes).
-- `seed.sql` — Sample data inserts (Indian realistic names, addresses, products).
-- `A_2D_entity-relationship_diagram_(ERD)_displays_an.png` — Visual ER diagram.
+- `E-COMMERCE.sql` — DDL for creating the database (InnoDB, utf8mb4, constraints, indexes).
+- `Dummy_Data.sql` — Sample data inserts (Realistic names, addresses, products ....).
+- `E_Commerce.png` — Visual ER diagram.
 - `ECOMMERCE_README.md` — This README file (you are reading it).
-- `queries.md` — Common SQL queries (get cart, wishlist, orders by user, ratings, etc).
 
 > Note: If you received only a subset of files, run the schema (`schema.sql`) first, then load `seed.sql`.
 
@@ -29,11 +28,11 @@ Included:
 3. Create the database and run the schema:
    ```sql
    -- from MySQL Workbench SQL editor
-   SOURCE /path/to/schema.sql;
+   SOURCE /path/to/E-COMMERCE..sql;
    ```
 4. Load seed data:
    ```sql
-   SOURCE /path/to/seed.sql;
+   SOURCE /path/to/Dummy_Data.sql;
    ```
 5. Open the ER diagram in MySQL Workbench:
    - File → Open Model → select the `.mwb` if provided, or
@@ -42,7 +41,7 @@ Included:
 ---
 
 ## How to use the ER Diagram
-- The ER diagram (`A_2D_entity-relationship_diagram_(ERD)_displays_an.png`) visually maps tables and foreign keys:
+- The ER diagram (`E-Commerce.png`) visually maps tables and foreign keys:
   - Users → Addresses, Wishlists, Carts, Orders
   - Products → Product_Variants, Product_Images, Reviews
   - Orders → Order_Details → Product_Variants
@@ -51,26 +50,13 @@ Included:
 
 ---
 
-## Key Features to Showcase (Interview Talking Points)
-- Normalized relational schema with enforced constraints and indexes.
-- Product variants & SKUs design for inventory accuracy.
-- Cart and Wishlist separation (cart for transient intent, wishlist for save-for-later).
-- Audit fields, ENUMs, and CHECK constraints for data integrity.
-- Order lifecycle and payment separation — supports multiple payments per order.
-- Realistic seeding data (Indian names, cities, festival coupons).
-- Extendable: recommendation engine, Elasticsearch integration, Redis caching.
+## Relational Image
+<img width="1833" height="1245" alt="Relational Diagram" src="https://github.com/user-attachments/assets/0ade27dd-9cd2-46b7-b6f5-ff069fdaa913" />
 
 ---
 
-## Suggested Next Steps / Enhancements
-1. Add role-based auth + admin panel.
-2. Integrate payment gateway (Razorpay / Stripe) and webhooks.
-3. Implement Redis caching for product details and cart sessions.
-4. Add Elasticsearch for fuzzy product search and auto-suggest.
-5. Build analytics dashboard (Chart.js / Recharts) for admin.
-6. Containerize with Docker and add CI/CD.
+## ER Diagram
 
----
 
 ## Useful SQL Snippets (examples)
 - Get user cart:
@@ -90,14 +76,4 @@ FROM Products p
 LEFT JOIN Reviews r ON p.product_id = r.product_id
 GROUP BY p.product_id, p.name;
 ```
-
----
-
-## License
-MIT License — feel free to reuse and adapt for your projects and interviews.
-
----
-
-## Contact / Credits
-Prepared for Aman Jaiswal — database schema, sample data, and ER diagram were created and arranged for learning and project use.
 
